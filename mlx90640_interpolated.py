@@ -23,8 +23,8 @@ ax = fig.add_subplot(111) # add subplot
 fig.subplots_adjust(0.05,0.05,0.95,0.95) # get rid of unnecessary padding
 therm1 = ax.imshow(np.zeros(mlx_interp_shape),interpolation='none',
                    cmap=plt.cm.bwr,vmin=25,vmax=45) # preemptive image
-cbar = fig.colorbar(therm1) # setup colorbar
-cbar.set_label('Temperature [$^{\circ}$C]',fontsize=14) # colorbar label
+#cbar = fig.colorbar(therm1) # setup colorbar
+#cbar.set_label('Temperature [$^{\circ}$C]',fontsize=14) # colorbar label
 
 fig.canvas.draw() # draw figure to copy background
 ax_background = fig.canvas.copy_from_bbox(ax.bbox) # copy background
@@ -38,7 +38,7 @@ def plot_update():
     data_array = ndimage.zoom(data_array,mlx_interp_val) # interpolate
     therm1.set_array(data_array) # set data
     therm1.set_clim(vmin=np.min(data_array),vmax=np.max(data_array)) # set bounds
-    cbar.on_mappable_changed(therm1) # update colorbar range
+#    cbar.on_mappable_changed(therm1) # update colorbar range
 
     ax.draw_artist(therm1) # draw new thermal image
     fig.canvas.blit(ax.bbox) # draw background

@@ -17,8 +17,8 @@ mlx_shape = (24,32)
 plt.ion() # enables interactive plotting
 fig,ax = plt.subplots(figsize=(12,7))
 therm1 = ax.imshow(np.zeros(mlx_shape),vmin=0,vmax=60) #start plot with zeros
-cbar = fig.colorbar(therm1) # setup colorbar for temps
-cbar.set_label('Temperature [$^{\circ}$C]',fontsize=14) # colorbar label
+#cbar = fig.colorbar(therm1) # setup colorbar for temps
+#cbar.set_label('Temperature [$^{\circ}$C]',fontsize=14) # colorbar label
 
 frame = np.zeros((24*32,)) # setup array for storing all 768 temperatures
 t_array = []
@@ -29,7 +29,7 @@ while True:
         data_array = (np.reshape(frame,mlx_shape)) # reshape to 24x32
         therm1.set_data(np.fliplr(data_array)) # flip left to right
         therm1.set_clim(vmin=np.min(data_array),vmax=np.max(data_array)) # set bounds
-        cbar.on_mappable_changed(therm1) # update colorbar range
+#        cbar.on_mappable_changed(therm1) # update colorbar range
         plt.pause(0.001) # required
         fig.savefig('mlx90640_test_fliplr.png',dpi=300,facecolor='#FCFCFC',
                     bbox_inches='tight') # comment out to speed up
